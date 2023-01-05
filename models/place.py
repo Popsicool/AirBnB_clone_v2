@@ -6,7 +6,7 @@ import models
 from sqlalchemy import Column, Table, String, Integer, Float, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
-from models import storage
+# from models import storage
 
 
 place_amenity = Table("place_amenity", Base.metadata,

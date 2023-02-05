@@ -12,9 +12,9 @@ from sqlalchemy import (create_engine)
 from sqlalchemy.ext.declarative import declarative_base
 
 
-
-
 all_classes = [State, City, User, Place, Review, Amenity]
+
+
 class DBStorage:
     __engine = None
     __session = None
@@ -48,11 +48,9 @@ class DBStorage:
                 objs = self.__session.query(c).all()
                 for i in objs:
                     key = i.__class__.__name__ + '.' + i.id
-                    dct[key] = i
-
-
+                    all_objs[key] = i
         return all_objs
-    
+
     def new(self, obj):
         """
         """
@@ -79,5 +77,6 @@ class DBStorage:
 
     def close(self):
         """
+        call remove() method on the private session attribute
         """
         self.__session.close()

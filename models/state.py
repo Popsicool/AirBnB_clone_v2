@@ -16,6 +16,7 @@ class State(BaseModel, Base):
         name = Column(String(128), nullable=False)
         cities = relationship("City", cascade='all, delete, delete-orphan',
                               backref="state")
+
         def __init__(self, *args, **kwargs):
             """initialize"""
             super().__init__(*args, **kwargs)
@@ -31,5 +32,3 @@ class State(BaseModel, Base):
                 if city.state_id == self.id:
                     cities_dict.append(city)
             return cities_dict
-
-    

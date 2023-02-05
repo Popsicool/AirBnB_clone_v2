@@ -1,4 +1,4 @@
-
+#!/usr/bin/python3
 from os import getenv
 from models.base_model import Base
 from models.state import State

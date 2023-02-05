@@ -6,7 +6,6 @@ from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, String
 import models
 from models.city import City
-from . import storage
 
 
 class State(BaseModel, Base):
@@ -26,7 +25,7 @@ class State(BaseModel, Base):
             '''
             '''
             cities_dict = []
-            all_cities = storage.all(City)
+            all_cities = models.storage.all(City)
             for city in all_cities.values():
                 if city.state_id == self.id:
                     cities_dict.append(city)

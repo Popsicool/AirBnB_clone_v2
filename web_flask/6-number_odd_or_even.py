@@ -43,14 +43,14 @@ def is_num(n):
 
 
 @app.route("/number_template/<int:n>", strict_slashes=False)
-def is_num_template(n):
+def is_num_template(n=None):
     ''' display a HTML page only if n is an integer:'''
     if isinstance(n, int):
         return render_template("5-number.html", n=n)
 
 
 @app.route("/number_odd_or_even/<int:n>", strict_slashes=False)
-def number_odd_or_even(n):
+def number_odd_or_even(n=None):
     ''' display a HTML page only if n is an integer:'''
     if isinstance(n, int):
         state = "odd"

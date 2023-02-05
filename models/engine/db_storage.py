@@ -20,6 +20,7 @@ class DBStorage:
     __session = None
 
     def __init__(self):
+        """ initialize"""
         HBNB_MYSQL_USER = getenv('HBNB_MYSQL_USER')
         HBNB_MYSQL_PWD = getenv('HBNB_MYSQL_PWD')
         HBNB_MYSQL_HOST = getenv('HBNB_MYSQL_HOST')
@@ -37,6 +38,7 @@ class DBStorage:
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
+        """ list all"""
         all_objs = {}
         if cls:
             objs = self.__session.query(cls).all()
@@ -53,22 +55,26 @@ class DBStorage:
 
     def new(self, obj):
         """
+        new
         """
         self.__session.add(obj)
 
     def save(self):
         """
+        save
         """
         self.__session.commit()
 
     def delete(self, obj=None):
         """
+        delete
         """
         if obj:
             self.session.delete(obj)
 
     def reload(self):
         """
+        reload
         """
         Base.metadata.create_all(self.__engine)
         sess = sessionmaker(bind=self.__engine, expire_on_commit=False)
@@ -79,4 +85,4 @@ class DBStorage:
         """
         call remove() method on the private session attribute
         """
-        self.__session.close()
+        self.__session.remove()

@@ -39,6 +39,8 @@ class DBStorage:
 
     def all(self, cls=None):
         """ list all"""
+        if not self.__session:
+            self.reload()
         all_objs = {}
         if cls:
             objs = self.__session.query(cls).all()
@@ -78,8 +80,7 @@ class DBStorage:
         """
         Base.metadata.create_all(self.__engine)
         sess = sessionmaker(bind=self.__engine, expire_on_commit=False)
-        Session = scoped_session(sess)
-        self.__session = Session()
+        self.__session = scoped_session(sess)
 
     def close(self):
         """

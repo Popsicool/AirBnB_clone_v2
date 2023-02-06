@@ -61,3 +61,6 @@ class Place(BaseModel, Base):
         amenities = relationship("Amenity", secondary=place_amenity,
                                  viewonly=False,
                                  back_populates="place_amenities")
+    def __init__(self, *args, **kwargs):
+        """initialize"""
+        super().__init__(*args, **kwargs)
